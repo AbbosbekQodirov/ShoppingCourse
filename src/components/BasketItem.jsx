@@ -10,8 +10,10 @@ function BasketItem({
   decrementQuantity,
 }) {
   return (
-    <li className="collection-item">
-      {name}x{quantity} = {price * quantity} <b>$</b>
+    <li className="collection-item ">
+      <div className="collection_info">
+        {name}x{quantity} = {price * quantity} <b>$</b>
+      </div>
       <span className="secondary-content">
         <a
           onClick={() => {

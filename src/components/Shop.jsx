@@ -11,15 +11,10 @@ function Shop() {
   const [loading, setLoading] = useState(true);
   const [order, setOrder] = useState([]);
 
-  const [isBasketShow, setBasketShow] = useState(false)
-
-
+  const [isBasketShow, setBasketShow] = useState(false);
 
   const addToBasket = (item) => {
-
     const itemIndex = order.findIndex((orderItem) => orderItem.id === item.id);
-
-
 
     if (itemIndex < 0) {
       const newItem = {
@@ -29,7 +24,7 @@ function Shop() {
       setOrder([...order, newItem]);
     } else {
       const newOrder = order.map((orderItem, index) => {
-        if ((index = itemIndex)) {
+        if ((index === itemIndex)) {
           return {
             ...orderItem,
             quantity: orderItem.quantity + 1,
@@ -38,37 +33,37 @@ function Shop() {
           return item;
         }
       });
-      setOrder(newOrder)
+      setOrder(newOrder);
     }
-    toast.success("Goods added to busket succesfully!")
+    toast.success("Goods added to busket succesfully!");
   };
 
-  const handleBusketShow = ()=>{
-    setBasketShow(!isBasketShow)
-  }
+  const handleBusketShow = () => {
+    setBasketShow(!isBasketShow);
+  };
 
-  const removeFrombasket = (itemId)=>{
-    const newOrder = order.filter(item => item.id !== itemId)
+  const removeFrombasket = (itemId) => {
+    const newOrder = order.filter((item) => item.id !== itemId);
     setOrder(newOrder);
-       toast.error("Goods deleted from busket succesfully!");
-  }
+    toast.error("Goods deleted from busket succesfully!");
+  };
 
   const incrementQuantity = (itemId) => {
-    const newOrder = order.map(el => {
-      if(el.id === itemId){
-        const newQuantity = el.quantity+1
+    const newOrder = order.map((el) => {
+      if (el.id === itemId) {
+        const newQuantity = el.quantity + 1;
 
         return {
           ...el,
-          quantity: newQuantity
-        }
-      }else{
-        return el
+          quantity: newQuantity,
+        };
+      } else {
+        return el;
       }
-    })
+    });
 
     setOrder(newOrder);
-  }
+  };
 
   const decrementQuantity = (itemId) => {
     const newOrder = order.map((el) => {
@@ -77,7 +72,7 @@ function Shop() {
 
         return {
           ...el,
-          quantity: newQuantity >=0 ? newQuantity : 0
+          quantity: newQuantity >= 0 ? newQuantity : 0,
         };
       } else {
         return el;
@@ -114,7 +109,6 @@ function Shop() {
           handleBusketShow={handleBusketShow}
           removeFrombasket={removeFrombasket}
           incrementQuantity={incrementQuantity}
-
           decrementQuantity={decrementQuantity}
         />
       )}

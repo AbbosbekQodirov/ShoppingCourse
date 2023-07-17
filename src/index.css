@@ -85,7 +85,44 @@ nav {
   }
 }
 
-.btnq {
-  position: relative;
-  bottom: 10px;
+.secondary-content{
+  display: flex;
+}
+
+
+
+
+.collection-item{
+  display: flex;
+  justify-content: space-between;
+}
+.collection-item a{
+  display: flex;
+  justify-content: center;
+}
+
+@media (max-width: 767px) {
+  .collection-item {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      align-items: center;
+    }
+    .collection_info{
+      font-size: 18px;
+    }
+    .secondary-content{
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+    }
+    
+}
+
+@media (max-width: 320px) {
+  .secondary-content a {
+      width: 100%;
+      margin: 0px !important;
+    }
 }
